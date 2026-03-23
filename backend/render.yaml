@@ -2,12 +2,12 @@ services:
   - type: web
     name: deepnetsoft-backend
     runtime: node
-    rootDir: backend
-    buildCommand: npm install --prefer-offline && npm run build
-    startCommand: node dist/server.js
+    buildCommand: npm ci --only=production
+    startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: 18.20.4
+      - key: MONGODB_URI
+        sync: false
       - key: PORT
         value: 5000
-    autoDeploy: true
