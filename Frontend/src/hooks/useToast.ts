@@ -1,9 +1,4 @@
-// ============================================================
-// src/hooks/useToast.ts  —  Reusable toast notification hook
-//
-// Used in AdminPage for create/delete feedback.
-// Extracted into a hook so multiple pages can reuse the logic.
-// ============================================================
+
 
 import { useState, useRef } from 'react'
 

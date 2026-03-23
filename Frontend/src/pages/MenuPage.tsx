@@ -12,7 +12,7 @@ const OPENING_HOURS = [
 export default function MenuPage() {
   const { menus, activeMenu, setActiveMenu, loading, error, groupedItems } = useMenu()
 
-  // Record<string, Item[]> → { "Appetizers": [...], "Salads": [...] }
+  
   const categories: Record<string, Item[]> = groupedItems()
 
   return (

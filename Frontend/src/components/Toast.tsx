@@ -1,6 +1,4 @@
-// ============================================================
-// src/components/Toast.tsx  —  Pop-up notification
-// ============================================================
+
 
 interface ToastProps {
   message: string

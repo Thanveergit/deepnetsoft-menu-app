@@ -1,11 +1,4 @@
-// ============================================================
-// src/pages/AdminPage.tsx  —  Admin panel
-//
-// Three sections:
-//   1. Create Menu form
-//   2. Add Item to Menu form
-//   3. Existing menus list with expandable items + delete
-// ============================================================
+
 
 import { useState, useEffect } from 'react'
 import { useMenu } from '../context/MenuContext'
