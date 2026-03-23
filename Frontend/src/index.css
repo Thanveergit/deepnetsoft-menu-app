@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors — used as bg-gold, text-dark-3 etc in JSX */
+  --color-gold:       #C9A84C;
+  --color-gold-light: #E8C96A;
+  --color-gold-dark:  #A0802A;
+
+  --color-dark:   #0D0D0D;
+  --color-dark-2: #141414;
+  --color-dark-3: #1A1A1A;
+  --color-dark-4: #222222;
+  --color-dark-5: #2A2A2A;
+
+  /* Custom fonts */
+  --font-cinzel:  "Cinzel", serif;
+  --font-raleway: "Raleway", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0D0D0D;
+  color: #F0EDE8;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Dotted line between item name and price on menu page */
+.dot-separator {
+  flex: 1;
+  border-bottom: 1px dotted rgba(201, 168, 76, 0.3);
+  margin: 0 0.5rem;
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
