@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: deepnetsoft-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install --prefer-offline && npm run build
+    startCommand: node dist/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18.20.4
+      - key: PORT
+        value: 5000
+    autoDeploy: true

@@ -1,7 +1,6 @@
 {
   "name": "deepnetsoft-backend",
   "version": "1.0.0",
-  "description": "DeepNetSoft REST API",
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
@@ -9,7 +8,8 @@
     "start": "node dist/server.js"
   },
   "engines": {
-    "node": "18.20.4"
+    "node": "18.20.4",
+    "npm": "9.0.0"
   },
   "dependencies": {
     "cors": "2.8.5",
