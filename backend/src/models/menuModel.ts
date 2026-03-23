@@ -8,7 +8,7 @@ const menuSchema = new Schema<IMenuDocument>(
       type:     String,
       required: [true, 'Menu name is required'],
       trim:     true,
-      unique:   true,   // prevents duplicate tab names
+      unique:   true,   
     },
     description: {
       type:    String,
