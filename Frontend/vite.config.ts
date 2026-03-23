@@ -6,11 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),   // Tailwind v4 uses a Vite plugin instead of PostCSS
+    tailwindcss(),   
   ],
+  base:'/',
   server: {
     port: 5173,
-    // Proxy API calls to Express backend so no CORS issues in dev
     proxy: {
       '/api': {
         target:      'http://localhost:5000',
