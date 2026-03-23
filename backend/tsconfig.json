@@ -1,24 +1,20 @@
 {
   "compilerOptions": {
-    /* Language and Environment */
-    "target": "ES2020",
-    "module": "CommonJS",
+    "target": "ES2019",
+    "module": "commonjs",
     "types": ["node"],
-
-    /* Project Structure */
-    "rootDir": "./src",
+    "lib": ["ES2019"],
     "outDir": "./dist",
-
-    /* Interop */
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Type Checking */
+    "rootDir": "./src",
     "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-
-    /* Extras */
-    "sourceMap": true,
-    
-  }
+    "resolveJsonModule": true,
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
