@@ -3,34 +3,61 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db";
 import itemsRoute from './routes/itemsRoute';
-import menusRoute from './routes/menusRoute'
-import { METHODS } from "node:http";
+import menusRoute from './routes/menusRoute';
 
+dotenv.config();
 
+const app = express();
 
-dotenv.config()
+// Better CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173',     
+  'http://localhost:3000',     
+  process.env.CLIENT_URL       
+].filter(Boolean); 
 
-const app = express()
+const corsOptions = {
+  origin: function (origin: string | undefined, callback: any) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || !process.env.CLIENT_URL) {
+      callback(null, true);
+    } else {
+      console.log('Blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 
-const corsOption = {
-     origin: process.env.CLIENT_URL ?? "http://localhost:5173",
-     credentials:true,
-     methods: ['GET','POST','DELETE','PUT','PATCH']
-}
-app.use(cors(corsOption));
+app.use(cors(corsOptions));
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
-//routes
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/menus',menusRoute);
-app.use('/api/items',itemsRoute)
+// Routes
+app.use('/api/menus', menusRoute);
+app.use('/api/items', itemsRoute);
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
 
 const PORT = Number(process.env.PORT) || 3000;
 
-connectDB().then(()=>{
-     app.listen(PORT,()=>{
-          console.log(` Server running on http://localhost:${PORT}`)
-     })
-})
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`CORS enabled for origins:`, allowedOrigins);
+  });
+}).catch((error) => {
+  console.error('Database connection failed:', error);
+  process.exit(1);
+});
